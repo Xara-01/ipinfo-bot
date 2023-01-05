@@ -78,32 +78,9 @@ async def help(ctx):
     value=
     "*__give the ping of the bot.__*",
     inline=True)
-  embed.add_field(
-    name="*__!clear__*",
-    value=
-    "*__Clear message.__*",
-    inline=False)
 
   embed.timestamp = ctx.message.created_at
   await ctx.send(embed=embed)
-
-
-
-
-@client.event
-async def on_message(message):
-    if message.content.startswith("!clear"):
-        if not message.author.guild_permissions.manage_messages:
-            await message.channel.send("_**__You don't have permission to use this command.__**_")
-            return
-
-        num_messages = int(message.content.split()[1])
-        await message.channel.purge(limit=num_messages)
-
-
-
-
-
 
 
 
@@ -136,8 +113,8 @@ async def ipinfo(ctx, ip_address):
 @tasks.loop(seconds=5)
 async def STATUS():
   await client.change_presence(activity = discord.Streaming(name = 
-    "Dev By > xara ~$", url = "https://twitch.tv/_sky.os_"))
+    "Dev By > xara ~$", url = "https://twitch.tv/xara_01"))
   time.sleep(1)
-  await client.change_presence(activity = discord.Streaming(name="!help", url = "https://twitch.tv/_sky.os_"))
+  await client.change_presence(activity = discord.Streaming(name="!help", url = "https://twitch.tv/xara_01"))
 
 client.run(token)
